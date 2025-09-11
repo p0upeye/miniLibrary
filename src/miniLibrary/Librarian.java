@@ -13,6 +13,10 @@ public class Librarian extends User {
         this.actions = new ArrayList<>();
     }
 
+    public List<String> getActions() {
+        return actions;
+    }
+
     // За об'єктом Book
     public void registerAction(Book book, User user, String action) {
         if(action.equals("borrow")) {
@@ -21,7 +25,7 @@ public class Librarian extends User {
                 book.setStatus("borrowed");
                 user.borrowBook(book);
                 String actionRecord = String.format("[-] %s позичив книгу '%s'", user.getName(), book.getTitle());
-                actions.add(actionRecord);
+                getActions().add(actionRecord);
                 System.out.println(actionRecord);
             }
             else {
@@ -35,7 +39,7 @@ public class Librarian extends User {
                 book.setStatus("available");
                 user.returnBook(book);
                 String actionRecord = String.format("[+] %s повернув книгу '%s'", user.getName(), book.getTitle());
-                actions.add(actionRecord);
+                getActions().add(actionRecord);
                 System.out.println(actionRecord);
             }
             else {
@@ -60,10 +64,6 @@ public class Librarian extends User {
             System.out.printf("%s[!] Пробачте %s, книги '%s' не має у наявності!%s\n",
                     ANSI_RED, user.getName(), bookTitle, ANSI_RESET);
         }
-    }
-
-    public List<String> getActions() {
-        return actions;
     }
 
     @Override

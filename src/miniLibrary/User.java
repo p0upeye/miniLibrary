@@ -20,10 +20,10 @@ public class User {
     }
 
     public void borrowBook(Book book) {  // Метод для запозичення книги
-        borrowedBooks.add(book);
+        getBorrowedBooks().add(book);
     }
     public void returnBook(Book book) {  // Метод для повернення книги
-        borrowedBooks.remove(book);
+        getBorrowedBooks().remove(book);
     }
 
     @Override

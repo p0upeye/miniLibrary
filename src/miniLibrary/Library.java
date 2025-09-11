@@ -14,6 +14,13 @@ public class Library {
         this.users = new ArrayList<>();
     }
 
+    public List<Book> getBooks() {
+        return books;
+    }
+    public List<User> getUsers() {
+        return users;
+    }
+
     public static int getTotalBooksAdded() {
         return totalBooksAdded;
     }
@@ -22,19 +29,19 @@ public class Library {
     }
 
     public void addBook(Book book) {
-        books.add(book);
+        getBooks().add(book);
         totalBooksAdded++;
         System.out.printf("Книгу %s було додано до бібліотеки!\n", book);
     }
 
     public void addUser(User user) {
-        users.add(user);
+        getUsers().add(user);
         totalUsersAdded++;
         System.out.printf("%s доданий/на до бібліотеки!\n", user);
     }
 
     public Book findBookByTitle(String title) {
-        for(Book book : books) {
+        for(Book book : getBooks()) {
             if (book.getTitle().equalsIgnoreCase(title)) {
                 return book;
             }
@@ -45,13 +52,13 @@ public class Library {
     public void displayAllBooks() {
         System.out.println("📚 СПИСОК КНИГ У БІБЛІОТЕЦІ");
 
-        if(books.isEmpty()) {
+        if(getBooks().isEmpty()) {
             System.out.println("○ У бібліотеці немає книг!");
         }
         else {
 
-            for(int i = 0; i < books.size(); i++) {
-                System.out.printf("%d. %s\n", (i + 1), books.get(i).toString());
+            for(int i = 0; i < getBooks().size(); i++) {
+                System.out.printf("%d. %s\n", (i + 1), getBooks().get(i).toString());
             }
         }
         System.out.println("Загальна кількість доданих книг: " + getTotalBooksAdded());
@@ -60,13 +67,13 @@ public class Library {
     public void displayAllUsers() {
         System.out.println("👥 СПИСОК КОРИСТУВАЧІВ БІБЛІОТЕКИ");
 
-        if(users.isEmpty()) {
+        if(getUsers().isEmpty()) {
             System.out.println("○ Бібліотека не користується популярністю серед користувачів!");
         }
         else {
 
-            for(int i = 0; i < users.size(); i++) {
-                System.out.printf("%d. %s\n", (i + 1), users.get(i).toString());
+            for(int i = 0; i < getUsers().size(); i++) {
+                System.out.printf("%d. %s\n", (i + 1), getUsers().get(i).toString());
             }
         }
         System.out.println("Загальна кількість доданих користувачів: " + getTotalUsersAdded());
@@ -74,9 +81,10 @@ public class Library {
 
     public void displayAllUserActions(Librarian librarian) {
         List<String> actions = librarian.getActions();
+
         System.out.printf("🫳 СПИСОК ДІЙ КОРИСТУВАЧІВ (Бібліотекар: %s)\n", librarian.getName());
 
-        if(users.isEmpty()) {
+        if(getUsers().isEmpty()) {
             System.out.println("○ Жодних дій не зафіксовано!");
         }
         else {
