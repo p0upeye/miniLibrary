@@ -1,4 +1,7 @@
-package miniLibrary;
+package service;
+
+import model.Book;
+import model.User;
 
 import java.util.ArrayList;
 import java.util.List;

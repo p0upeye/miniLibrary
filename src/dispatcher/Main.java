@@ -1,4 +1,9 @@
-package miniLibrary;
+package dispatcher;
+
+import model.Book;
+import model.User;
+import service.Librarian;
+import service.Library;
 
 public class Main {
     public static void main(String[] args) {
